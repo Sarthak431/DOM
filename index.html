@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Overview</title>
+</head>
+<body>
+    <h1>DOM (Document Object Model)</h1>
+    <p>DOM is a programming interface for web documents. It represents the structure of an HTML or XML document as a tree-like data structure, where each element in the document is a node in the tree. DOM allows you to access, manipulate, and update the content and structure of a web page dynamically using JavaScript.</p>
+
+    <h2>1. DOM Tree Structure</h2>
+    <p>The DOM tree is a hierarchical representation of an HTML or XML document. It starts with the root node (usually <code>&lt;html&gt;</code>), and all other elements, attributes, and text nodes are its descendants.</p>
+    <p>For example, consider the following HTML snippet:</p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;DOM Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p>The DOM tree structure for this HTML would look like:</p>
+    <pre><code>Document
+└── html
+    ├── head
+    │   └── title
+    │       └── "DOM Example"
+    └── body
+        ├── h1
+        │   └── "Hello, World!"
+        └── p
+            └── "This is a paragraph."</code></pre>
+
+    <h2>2. DOM Nodes</h2>
+    <p>DOM nodes are the elements, attributes, and text content in the DOM tree. Each node can be an element node, attribute node, or text node.</p>
+    <ul>
+        <li><strong>Element Node:</strong> Represents HTML elements, such as <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, etc.</li>
+        <li><strong>Attribute Node:</strong> Represents attributes of an element, such as <code>src</code>, <code>href</code>, etc.</li>
+        <li><strong>Text Node:</strong> Represents the text content within an element.</li>
+    </ul>
+
+    <h2>3. Accessing DOM Elements</h2>
+    <p>You can access DOM elements using JavaScript by using various methods, such as:</p>
+    <ul>
+        <li><code>document.getElementById()</code>: Returns a single element with the specified ID.</li>
+        <li><code>document.getElementsByClassName()</code>: Returns a collection of elements with the specified class name.</li>
+        <li><code>document.getElementsByTagName()</code>: Returns a collection of elements with the specified tag name.</li>
+        <li><code>document.querySelector()</code>: Returns the first element that matches the specified CSS selector.</li>
+        <li><code>document.querySelectorAll()</code>: Returns a list of all elements that match the specified CSS selector.</li>
+    </ul>
+    <p>Example:</p>
+    <pre><code>&lt;div id="myDiv"&gt;This is a div.&lt;/div&gt;
+&lt;p class="myClass"&gt;This is a paragraph.&lt;/p&gt;
+
+&lt;script&gt;
+    const divElement = document.getElementById("myDiv");
+    const pElements = document.getElementsByClassName("myClass");
+&lt;/script&gt;</code></pre>
+
+    <h2>4. Manipulating DOM Elements</h2>
+    <p>You can manipulate DOM elements by changing their content, attributes, or style.</p>
+    <ul>
+        <li><strong>Changing Content:</strong> Use <code>textContent</code>, <code>innerHTML</code>, or <code>innerText</code> properties.</li>
+        <li><strong>Changing Attributes:</strong> Use <code>setAttribute()</code> method or directly access the attribute using the element's properties (e.g., <code>element.src</code>, <code>element.href</code>).</li>
+        <li><strong>Changing Style:</strong> Use <code>style</code> property to access and modify CSS properties of an element.</li>
+    </ul>
+    <p>Example:</p>
+    <pre><code>&lt;p id="myPara"&gt;This is a paragraph.&lt;/p&gt;
+
+&lt;script&gt;
+    const paraElement = document.getElementById("myPara");
+    paraElement.textContent = "This is updated content.";
+    paraElement.setAttribute("class", "newClass");
+    paraElement.style.color = "blue";
+&lt;/script&gt;</code></pre>
+
+    <h2>5. Creating and Appending Elements</h2>
+    <p>You can create new elements dynamically and append them to the DOM.</p>
+    <ul>
+        <li><code>document.createElement()</code>: Creates a new element node.</li>
+        <li><code>element.appendChild()</code>: Appends a child node to the specified parent element.</li>
+    </ul>
+    <p>Example:</p>
+    <pre><code>&lt;div id="myDiv"&gt;This is a div.&lt;/div&gt;
+
+&lt;script&gt;
+    const divElement = document.getElementById("myDiv");
+    const newPara = document.createElement("p");
+    newPara.textContent = "This is a new paragraph.";
+    divElement.appendChild(newPara);
+&lt;/script&gt;</code></pre>
+
+    <h2>6. Event Handling</h2>
+    <p>DOM allows you to attach event listeners to elements to respond to user interactions, such as clicks, keypresses, etc.</p>
+    <p>Example:</p>
+    <pre><code>&lt;button id="myButton"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+    const button = document.getElementById("myButton");
+    button.addEventListener("click", function() {
+        alert("Button clicked!");
+    });
+&lt;/script&gt;</code></pre>
+
+    <h2>7. DOM Traversal</h2>
+    <p>DOM traversal involves navigating between nodes in the DOM tree, moving from parent to child or from child to parent.</p>
+    <p>Example:</p>
+    <pre><code>&lt;ul id="myList"&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+    const myList = document.getElementById("myList");
+    const listItems = myList.getElementsByTagName("li");
+
+    for (let i = 0; i &lt; listItems.length; i++) {
+        console.log(listItems[i].textContent);
+    }
+&lt;/script&gt;</code></pre>
+</body>
+</html>
